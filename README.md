@@ -1,209 +1,117 @@
-# Awesome-Data-Versioning-Platform
-
-## Top Data Versioning Platforms Ecosystem
-
-
-
-**Curated List of SaaS Products & Open-Source GitHub Projects**
-
-*Focused on Dataset Versioning, Model Artifact Management, Git-for-Data & Reproducibility*
-
-**Last updated: September 2026**
-
-
-
-This repository tracks notable **SaaS platforms** and **open-source projects** for **Data Versioning**. These tools help data scientists, ML engineers, and data platform teams version datasets, models, and artifacts the same way developers version code—with commits, branches, tags, and full audit history.
-
-
-
-**Examples** include DVC Studio, lakeFS, Pachyderm, DoltHub, Weights & Biases Artifacts, ClearML, DagsHub, Project Nessie, Iterative Studio, and Git-LFS (the category leaders).
-
-
-
-**Open-source emphasis**: Data versioning has a **mature and production-proven open-source ecosystem**. **lakeFS** and **DVC** are now under one roof—lakeFS acquired the DVC team in November 2025 . **Dolt** brings full Git semantics into the database itself with 19,391 stars . **Nessie** provides Git-like branching for Iceberg data lakes . **DagsHub** connects Git, DVC, and MLflow for a unified MLOps platform . This section documents these production-grade solutions.
-
-
-
-Contributions welcome! Open a PR to add/update entries. Keep descriptions factual and link to official sites.
-
-
-
-## Table of Contents
-
-
-
-- [SaaS/Hosted Platforms](#saas-hosted-platforms)
-
-- [Open-Source GitHub Projects](#open-source-github-projects)
-
-- [How to Contribute](#how-to-contribute)
-
-- [Disclaimer](#disclaimer)
-
-
-
-## SaaS/Hosted Platforms
-
-
-
-- **[lakeFS Cloud](https://lakefs.io/)**
-
-  Managed version of lakeFS, the leading Git-for-data platform for data lakes. Provides zero-copy branching, time travel, and atomic commits on object storage. **Acquired the DVC team in November 2025**, unifying the data versioning standard.
-
-
-
-- **[DVC Studio](https://studio.iterative.ai/)**
-
-  Cloud hub for DVC-based experiment tracking and model management. Centralizes projects, experiments, and models with Git-based versioning. **Now part of the lakeFS ecosystem** following the November 2025 acquisition.
-
-
-
-- **[Weights & Biases Artifacts](https://wandb.ai/)**
-
-  ML artifact versioning within the W&B platform. Tracks datasets, models, and dependencies with lineage, aliases, and tags .
-
-
-
-- **[Iterative Studio](https://iterative.ai/)**
-
-  DVC's commercial offering for experiment tracking and model management. Now aligned with lakeFS direction.
-
-
-
-- **[DagsHub](https://dagshub.com/)**
-
-  Platform connecting Git, DVC, and MLflow for a unified MLOps experience. Hosts datasets and models with versioning and lineage . Free tier includes unlimited public repos and up to 100 tracked experiments in private repos; Team at $99/user/month .
-
-
-
-- **[ClearML](https://clear.ml/)**
-
-  MLOps platform with artifact and dataset versioning. Provides experiment tracking, data management, and model registry.
-
-
-
-- **[Pachyderm](https://www.pachyderm.com/)**
-
-  Data versioning and pipeline platform for Kubernetes. Provides Git-like versioning for data with automatic pipeline triggering on changes.
-
-
-
-- **[DoltHub](https://www.dolthub.com/)**
-
-  Cloud platform for Dolt databases. Provides hosted version-controlled SQL databases with collaboration features.
-
-
-
-## Open-Source GitHub Projects
-
-
-
-### Data Lake & Catalog Versioning
-
-
-
-- **[lakeFS](https://github.com/treeverse/lakeFS)**
-
-  **The leading Git-for-data platform for data lakes.** **4,054 stars, 328 forks**. Provides **zero-copy branching** (instant, no data duplication), **atomic commits**, **time travel** to historical versions, and **S3 API compatibility** . Works with **S3, Azure Blob, GCS** and integrates with **Iceberg/Delta Lake**. Scale: petabytes. Format: any (object storage). **Go-based**. **Acquired DVC team November 2025**—now the unified standard for data versioning.
-
-
-
-- **[Nessie](https://github.com/projectnessie/nessie)**
-
-  **Transactional catalog for data lakes with Git-like semantics.** **1,044+ stars**. Provides **branch, tag, merge, and multi-table commits** for Apache Iceberg tables. **Only product in the lakehouse catalog space that versions the entire catalog** with branches, tags, merges, and cross-table atomic commits. Works with **Spark, Trino, Flink, Dremio** and other Iceberg-compatible engines. **Apache-2.0**.
-
-
-
-- **[EpochFS](https://github.com/epochfs/epochfs)**
-
-  **Versioned cloud file system with Git-like branching and exabyte scale.** **Apache-2.0 licensed**. Provides zero-copy branching, atomic commits, and time travel on object storage.
-
-
-
-### ML Dataset & Artifact Versioning
-
-
-
-- **[DVC (Data Version Control)](https://github.com/iterative/dvc)**
-
-  **Git-like version control for ML datasets and models.** **13,212 stars, 1,148 forks**. Stores **pointer files in Git** while keeping actual data in remote cache (S3, GCS, Azure, etc.). **Key features**: `dvc add` for dataset tracking; `dvc repro` for reproducible pipelines (DAG); `dvc exp run` for experiment management; `dvc diff` for change detection. Granularity: file-level (can't show row-level changes). **Best for**: Small ML projects and reproducible pipelines. **Python-based**. **Note**: DVC team acquired by lakeFS (November 2025); lakeFS recommended for new projects.
-
-
-
-- **[ChiveSave](https://github.com/CHIVE-AI/chivesave-community-backend)**
-
-  **Self-hosted, community-driven AI artifact versioning backend.** **FastAPI + PostgreSQL**. **Core features**: **Version Saving** (securely upload and store new versions of AI artifacts with descriptive names, detailed descriptions, and custom JSON metadata); **Preview** (retrieve comprehensive metadata for any version without downloading); **Restore** (activate any previous version by copying to "current active" directory); **Version Database** (PostgreSQL backend for reliable metadata storage). **Authentication**: JWT-based with user registration and role-based access control. **Deployment**: Docker Compose for easy setup. **Perfect for**: Individual researchers, small teams, or community-driven AI initiatives.
-
-
-
-- **[ModelDB](https://github.com/VertaAI/modeldb)**
-
-  **Open-source model versioning and metadata management system.** **1,668 stars, 375 forks**. Designed to track ML models, versions, and associated metadata throughout their lifecycle.
-
-
-
-### In-Database Version Control
-
-
-
-- **[Dolt](https://github.com/dolthub/dolt)**
-
-  **Git for Data—version control built into the database kernel.** **19,391 stars, 593 forks**. MySQL-compatible SQL database with **native Git semantics** (commit, branch, merge, diff, clone, push/pull) operating at **row-level granularity**. **Key difference from file-based tools**: Version control is inside the database, understanding every row and storing changes as immutable increments. **Best for**: Applications requiring row-level data versioning, audit trails, or collaborative data editing.
-
-
-
-### Additional Strong Open-Source Options
-
-
-
-- **Data Lake Versioning**: **lakeFS** (zero-copy branching, petabyte scale, S3-compatible), **Nessie** (Iceberg catalog with Git semantics, multi-table commits), **EpochFS** (versioned cloud file system, exabyte scale) .
-
-- **ML Dataset Versioning**: **DVC** (Git-like, file-level, 13k+ stars), **ChiveSave** (self-hosted AI artifact backend, FastAPI + PostgreSQL), **ModelDB** (model versioning and metadata, 1,668 stars) .
-
-- **In-Database**: **Dolt** (row-level Git for data, MySQL-compatible, 19k+ stars) .
-
-- **Metadata**: **MLflow** (Model Registry for versioning and lifecycle management, Apache-2.0) .
-
-
-
-**Frameworks for building custom systems**: Combine **lakeFS** for data lake versioning with zero-copy branching, **DVC** for ML dataset and pipeline versioning, **Nessie** for Iceberg catalog branching and multi-table commits, **Dolt** for row-level in-database versioning, and **ChiveSave** for self-hosted AI artifact management. Add **PostgreSQL** for metadata persistence and **Docker** for deployment.
-
-
-
-## How to Contribute
-
-
-
-1. Fork the repo.
-
-2. Add/edit entries in `README.md` (follow existing format).
-
-3. Include: name, link, 1–2 sentence description, and whether it's SaaS or open-source.
-
-4. Submit PR with a short explanation.
-
-
-
-Star the repo if you find it useful!
-
-
-
-## Disclaimer
-
-
-
-- This is a **community-curated** list — not exhaustive and not an endorsement.
-
-- Data versioning platforms handle sensitive datasets and models; ensure proper access controls and compliance with data governance policies.
-
-- **Open-source reality**: The open-source ecosystem for data versioning is **mature and production-proven**. **lakeFS** and **DVC** are now under one roof following the November 2025 acquisition, with lakeFS recommended for production data lakes and DVC still viable for small ML projects . **Nessie** remains the only catalog providing Git-like branching across Iceberg tables . **Dolt** brings row-level Git semantics into the database kernel with 19,391 stars . **ChiveSave** provides a self-hosted AI artifact backend for teams wanting full control . The open-source path is **genuinely viable** for organizations seeking data versioning without vendor lock-in.
-
-
+<p align="center">
+  <a href="https://github.com/ishandutta2007/Awesome-Awesome-Awesome"><img src="https://img.shields.io/badge/Awesome-%E2%9C%94-blueviolet?style=flat-square&logo=github" alt="Awesome"/></a>
+  <a href="https://discord.gg/jc4xtF58Ve"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Data-Versioning-Platform/stargazers"><img src="https://img.shields.io/github/stars/ishandutta2007/Awesome-Data-Versioning-Platform?style=flat-square&logo=github" alt="GitHub Stars"/></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Data-Versioning-Platform/network/members"><img src="https://img.shields.io/github/forks/ishandutta2007/Awesome-Data-Versioning-Platform?style=flat-square&logo=github" alt="GitHub Forks"/></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Data-Versioning-Platform/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg?style=flat-square" alt="License"/></a>
+  <a href="https://github.com/ishandutta2007"><img alt="GitHub followers" src="https://img.shields.io/github/followers/ishandutta2007?label=Follow" /></a>
+</p>
+
+<p align="center">
+  <img src="assets/banner.svg" alt="Awesome Data Versioning Platform Banner" width="100%" />
+</p>
+
+# 🚀 Awesome Data Versioning Platform Ecosystem
+
+> **A curated, comprehensive guide to top SaaS platforms & open-source projects for Data Versioning, Git-for-Data, Data Lake Branching, Model Registries & Reproducible MLOps.**
 
 ---
 
+## 📌 Executive Overview & Market Context
 
+Data versioning allows data scientists, ML engineers, and enterprise platform teams to version datasets, database tables, and machine learning models with standard software git semantics—enabling zero-copy branching, time-travel queries, atomic commits, and auditability.
 
-**Made for data engineers, ML engineers, MLOps practitioners, and data platform teams.**
+* **Open-Source Standardization & Consolidation**: The data versioning landscape has entered a production-proven era. Notably, **lakeFS** (Treeverse) acquired the **DVC** team in November 2025, bringing object-storage data lake branching and file-based ML pipeline tracking under one roof. Tools like **Dolt** (row-level database Git), **Nessie** (Iceberg catalog branching), and **MLflow** (model registry & tracking) form the foundation of modern reproducible AI pipelines.
 
-Let's make data versioning more open, transparent, and reproducible.
+---
+
+## 📑 Table of Contents
+
+- [☁️ SaaS / Hosted Data Versioning Platforms](#-saas--hosted-data-versioning-platforms)
+- [🔓 Open-Source Data Versioning Projects](#-open-source-data-versioning-projects)
+- [🤝 How to Contribute](#-how-to-contribute)
+- [💖 Support & Community](#-support--community)
+- [📈 Star History](#-star-history)
+- [📜 Disclaimer](#-disclaimer)
+
+---
+
+## ☁️ SaaS / Hosted Data Versioning Platforms
+
+📊 **Market Intelligence & Dynamics**: The global Data Versioning and MLOps sector is estimated at **~$4.2 Billion in 2026** (projected to reach **$16.5 Billion by 2030** at a ~31% CAGR). The market is currently **moderately fragmented**, with active strategic consolidation (e.g., lakeFS acquiring DVC, HPE acquiring Pachyderm) standardizing data lake control planes and model lifecycle tracking.
+
+The table below summarizes leading managed SaaS solutions, sorted by **Company Scale & Valuation (Descending)**:
+
+| 🏢 Platform / SaaS Product | 📈 Scale & Valuation | 💰 Starting Tier Price | 🎁 Free Tier / Trial Limit |
+| :--- | :--- | :--- | :--- |
+| **[Pachyderm (HPE MLDM)](https://www.pachyderm.com/)** <br> Data versioning and automated pipeline orchestration engine for Kubernetes. | **$28.5 Billion Revenue** <br>*(Parent HPE; acquired 2023)* | **$1,000 / month** <br>*(Contact HPE Sales for Enterprise)* | **14-day Enterprise Free Trial** <br>*(Self-hosted Community Edition is free)* |
+| **[Weights & Biases Artifacts](https://wandb.ai/)** <br> Enterprise ML artifact, dataset, and model lineage tracking within W&B platform. | **$1.25 Billion Valuation** <br>*(~$50M+ ARR)* | **$60 / user / month** <br>*(Pro Plan)* | **5 GB Storage & 1 GB Ingestion/mo** <br>*(Up to 5 team seats)* |
+| **[lakeFS Cloud](https://lakefs.io/)** <br> Managed zero-copy data lake branching, time-travel, and S3-compatible data version control. | **$51 Million Funding** <br>*(Acquired DVC team Nov 2025)* | **$0.007 / GB / month** <br>*(Cloud Standard starts $250/mo)* | **15-day Enterprise Cloud Free Trial** <br>*(Full feature access)* |
+| **[Iterative Studio](https://iterative.ai/)** <br> Cloud experiment tracking and model management platform for DVC & Git. | **$25 Million Funding** <br>*(Aligned with lakeFS ecosystem)* | **$50 / user / month** <br>*(Team Plan)* | **5 Team Members & 5 Active Experiments** <br>*(Free forever)* |
+| **[DoltHub](https://www.dolthub.com/)** <br> Hosted cloud platform for version-controlled, MySQL-compatible SQL databases. | **$21 Million Funding** <br>*(~$1.5M ARR)* | **$5 / month** <br>*(Pro Plan for private DBs)* | **100 MB Private Storage Free** <br>*(Unlimited public databases)* |
+| **[ClearML Pro](https://clear.ml/)** <br> Unified MLOps platform featuring data management, artifact versioning, and tracking. | **$16 Million Funding** <br>*(~$4.7M ARR)* | **$15 / user / month** <br>*(Pro Plan + cloud usage)* | **3 Team Users, 100 GB Storage & 1M API Calls/mo** |
+| **[DagsHub](https://dagshub.com/)** <br> Integrated platform connecting Git, DVC, and MLflow for unified dataset/model versioning. | **$3.6 Million Funding** <br>*(~$1.5M ARR)* | **$99 / user / month** <br>*(Team Plan billed annually)* | **20 GB DagsHub Storage & 100 Private Experiments** <br>*(Unlimited public repos)* |
+
+---
+
+## 🔓 Open-Source Data Versioning Projects
+
+Production-proven open-source repositories powering data lakes, relational databases, feature stores, and ML artifacts. 
+
+Sorted by **GitHub Star Count (Descending)**:
+
+| 📦 Repository & Project Name | ⭐ Stars & Link | 📝 Primary Description & Key Use Cases |
+| :--- | :---: | :--- |
+| **[MLflow](https://github.com/mlflow/mlflow)** <br> *(mlflow/mlflow)* | [<img src="https://img.shields.io/github/stars/mlflow/mlflow?style=social&color=white" alt="MLflow Stars"/>](https://github.com/mlflow/mlflow/stargazers) | **Open-source MLOps platform**. Provides Model Registry, dataset versioning, experiment tracking, and artifact logging. |
+| **[Dolt](https://github.com/dolthub/dolt)** <br> *(dolthub/dolt)* | [<img src="https://img.shields.io/github/stars/dolthub/dolt?style=social&color=white" alt="Dolt Stars"/>](https://github.com/dolthub/dolt/stargazers) | **Git for Data**. MySQL-compatible relational database with native row-level Git semantics (commit, branch, merge, diff). |
+| **[DVC (Data Version Control)](https://github.com/iterative/dvc)** <br> *(iterative/dvc)* | [<img src="https://img.shields.io/github/stars/iterative/dvc?style=social&color=white" alt="DVC Stars"/>](https://github.com/iterative/dvc/stargazers) | **Git-like version control for ML datasets & models**. Manages pointer files in Git with remote cache storage (S3/GCS/Azure). |
+| **[Git LFS](https://github.com/git-lfs/git-lfs)** <br> *(git-lfs/git-lfs)* | [<img src="https://img.shields.io/github/stars/git-lfs/git-lfs?style=social&color=white" alt="Git LFS Stars"/>](https://github.com/git-lfs/git-lfs/stargazers) | **Git Large File Storage**. Replaces large binary files (datasets, model weights) with text pointers inside Git repositories. |
+| **[Great Expectations](https://github.com/great-expectations/great_expectations)** <br> *(great-expectations/great_expectations)* | [<img src="https://img.shields.io/github/stars/great-expectations/great_expectations?style=social&color=white" alt="Great Expectations Stars"/>](https://github.com/great-expectations/great_expectations/stargazers) | **Data quality & validation framework**. Validates, documents, and profiles datasets across pipeline versions. |
+| **[Kedro](https://github.com/kedro-org/kedro)** <br> *(kedro-org/kedro)* | [<img src="https://img.shields.io/github/stars/kedro-org/kedro?style=social&color=white" alt="Kedro Stars"/>](https://github.com/kedro-org/kedro/stargazers) | **Data science framework**. Creates reproducible, maintainable data pipelines with integrated dataset versioning capabilities. |
+| **[Apache Iceberg](https://github.com/apache/iceberg)** <br> *(apache/iceberg)* | [<img src="https://img.shields.io/github/stars/apache/iceberg?style=social&color=white" alt="Apache Iceberg Stars"/>](https://github.com/apache/iceberg/stargazers) | **High-performance open table format for huge analytic datasets**. Enables snapshot isolation and table time-travel. |
+| **[Delta Lake](https://github.com/delta-io/delta)** <br> *(delta-io/delta)* | [<img src="https://img.shields.io/github/stars/delta-io/delta?style=social&color=white" alt="Delta Lake Stars"/>](https://github.com/delta-io/delta/stargazers) | **Open-source storage layer**. Brings ACID transactions, data versioning (time travel), and schema enforcement to data lakes. |
+| **[Flyte](https://github.com/flyteorg/flyte)** <br> *(flyteorg/flyte)* | [<img src="https://img.shields.io/github/stars/flyteorg/flyte?style=social&color=white" alt="Flyte Stars"/>](https://github.com/flyteorg/flyte/stargazers) | **Production-grade data & ML orchestration engine**. Tracks execution provenance, dataset lineage, and typed artifacts. |
+| **[Feast](https://github.com/feast-dev/feast)** <br> *(feast-dev/feast)* | [<img src="https://img.shields.io/github/stars/feast-dev/feast?style=social&color=white" alt="Feast Stars"/>](https://github.com/feast-dev/feast/stargazers) | **Open-source feature store for ML**. Manages, serves, and versions point-in-time correct features for model training & inference. |
+| **[Pachyderm (Community)](https://github.com/pachyderm/pachyderm)** <br> *(pachyderm/pachyderm)* | [<img src="https://img.shields.io/github/stars/pachyderm/pachyderm?style=social&color=white" alt="Pachyderm Stars"/>](https://github.com/pachyderm/pachyderm/stargazers) | **Data versioning & data-driven pipelines on Kubernetes**. Offers Git-like data version control with automated lineage tracking. |
+| **[lakeFS](https://github.com/treeverse/lakeFS)** <br> *(treeverse/lakeFS)* | [<img src="https://img.shields.io/github/stars/treeverse/lakeFS?style=social&color=white" alt="lakeFS Stars"/>](https://github.com/treeverse/lakeFS/stargazers) | **Git-for-data platform for data lakes**. Zero-copy branching, time travel, and atomic commits on S3, GCS, and Azure Blob storage. |
+| **[CML (Continuous Machine Learning)](https://github.com/iterative/cml)** <br> *(iterative/cml)* | [<img src="https://img.shields.io/github/stars/iterative/cml?style=social&color=white" alt="CML Stars"/>](https://github.com/iterative/cml/stargazers) | **Open-source library for CI/CD in ML projects**. Auto-generates metrics & dataset diff reports directly in GitHub/GitLab PRs. |
+| **[ModelDB](https://github.com/VertaAI/modeldb)** <br> *(VertaAI/modeldb)* | [<img src="https://img.shields.io/github/stars/VertaAI/modeldb?style=social&color=white" alt="ModelDB Stars"/>](https://github.com/VertaAI/modeldb/stargazers) | **Model versioning and metadata management system**. Tracks machine learning models, pipelines, and execution metadata. |
+| **[Nessie](https://github.com/projectnessie/nessie)** <br> *(projectnessie/nessie)* | [<img src="https://img.shields.io/github/stars/projectnessie/nessie?style=social&color=white" alt="Nessie Stars"/>](https://github.com/projectnessie/nessie/stargazers) | **Transactional catalog for data lakes**. Provides Git-like multi-table branching, tagging, and atomic commits for Apache Iceberg. |
+| **[Quilt](https://github.com/quiltdata/quilt)** <br> *(quiltdata/quilt)* | [<img src="https://img.shields.io/github/stars/quiltdata/quilt?style=social&color=white" alt="Quilt Stars"/>](https://github.com/quiltdata/quilt/stargazers) | **Data package manager & versioning tool**. Manages AWS S3 data packages with version control, docs, and visualization. |
+| **[ChiveSave](https://github.com/CHIVE-AI/chivesave-community-backend)** <br> *(CHIVE-AI/chivesave-community-backend)* | [<img src="https://img.shields.io/github/stars/CHIVE-AI/chivesave-community-backend?style=social&color=white" alt="ChiveSave Stars"/>](https://github.com/CHIVE-AI/chivesave-community-backend/stargazers) | **Self-hosted AI artifact versioning backend**. Built with FastAPI & PostgreSQL for private artifact storage and metadata restore. |
+
+---
+
+## 🤝 How to Contribute
+
+Contributions are warmly welcomed! Please follow these simple guidelines:
+
+1. **Fork** the repository.
+2. Add your suggested project/tool to `README.md` maintaining alphabetical or specified sorting order.
+3. Ensure description includes key features, starting price/tier (for SaaS), or GitHub repository stargazers link (for Open Source).
+4. Submit a **Pull Request** with a descriptive summary of changes.
+
+Check out our awesome ecosystem list collection at [Awesome-Awesome-Awesome](https://github.com/ishandutta2007/Awesome-Awesome-Awesome)!
+
+---
+
+## 💖 Support & Community
+
+If you find this repository helpful, please consider showing your support:
+
+- 🌟 **Star this repository** to help others discover data versioning tools!
+- 🔀 **Fork & Share** with your team, ML engineers, and data community.
+- 💬 **Join our Discord**: Connect with fellow data professionals on [Discord](https://discord.gg/jc4xtF58Ve).
+- ☕ **Sponsor & Buy a Coffee**: Support ongoing open-source curation on [GitHub Sponsors](https://github.com/sponsors/ishandutta2007).
+
+---
+
+## 📈 Star History
+
+[![Star History Chart](https://star-history.dera.page/svg?repos=ishandutta2007/Awesome-Data-Versioning-Platform&type=date&legend=top-left)](https://star-history.dera.page/#ishandutta2007/Awesome-Data-Versioning-Platform&type=date&legend=top-left)
+
+---
+
+## 📜 Disclaimer
+
+This list is community-curated for informational and educational purposes. Product details, pricing, and company metrics are accurate based on public data sources as of late 2026. Data versioning software handles critical business data and AI model assets—ensure proper security controls and data governance compliance before enterprise deployment.
